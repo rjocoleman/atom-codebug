@@ -9,11 +9,16 @@ module.exports =
     atom.workspaceView.command 'codebug:break', '.editor', => @codebugBreak()
 
   codebugBreak: ->
-    @openUrlInBrowser(@breakUrl())
-    console.log @breakUrl()
+    if @isOpenable()
+      @openUrlInBrowser(@breakUrl())
+      console.log @breakUrl()
+    else
+      @reportValidationErrors()
 
   file: ->
-    encodeURI(atom.workspaceView.getActivePaneItem().buffer.file.path)
+    activeItem = atom.workspaceView.getActivePaneItem()
+    if activeItem.buffer.file?
+      encodeURI(activeItem.buffer.file.path)
 
   getLineNumber: ->
     lineRange = atom.workspaceView.getActivePaneItem()?.getSelectedBufferRange?()
@@ -37,3 +42,16 @@ module.exports =
 
   whichOperation: ->
     'add'
+
+  isOpenable: ->
+    @validationErrors().length == 0
+
+  validationErrors: ->
+    unless @file()
+      return ['Buffer is not saved!']
+
+    []
+
+  reportValidationErrors: ->
+    atom.beep()
+    console.warn error for error in @validationErrors()

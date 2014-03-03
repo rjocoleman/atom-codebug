@@ -1,6 +1,6 @@
 {
   "name": "codebug",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "./lib/codebug",
   "description": "Debug with Codebug",
   "repository": "https://github.com/rjocoleman/atom-codebug",

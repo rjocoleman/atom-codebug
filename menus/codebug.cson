@@ -1,0 +1,11 @@
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'Codebug'
+      'submenu': [
+        { 'label': 'Break on selected line', 'command': 'codebug:break' }
+      ]
+    ]
+  }
+]

@@ -16,12 +16,12 @@ module.exports =
       @reportValidationErrors()
 
   file: ->
-    activeItem = atom.workspaceView.getActivePaneItem()
+    activeItem = atom.workspace.getActivePaneItem()
     if activeItem.buffer.file?
       encodeURI(activeItem.buffer.file.path)
 
   getLineNumber: ->
-    lineRange = atom.workspaceView.getActivePaneItem()?.getSelectedBufferRange?()
+    lineRange = atom.workspace.getActivePaneItem()?.getSelectedBufferRange?()
     if lineRange
       lineRange = Range.fromObject(lineRange)
       startRow = lineRange.start.row + 1

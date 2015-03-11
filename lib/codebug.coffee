@@ -6,7 +6,7 @@ module.exports =
     openCodebug: true
 
   activate: ->
-    atom.workspaceView.command 'codebug:break', '.editor', => @codebugBreak()
+    atom.commands.add 'atom-workspace', 'codebug:break', => @codebugBreak()
 
   codebugBreak: ->
     if @isOpenable()

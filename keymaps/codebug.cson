@@ -1,2 +1,2 @@
-'.workspace':
+'atom-workspace':
   'cmd-alt-b': 'codebug:break'

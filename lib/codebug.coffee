@@ -2,8 +2,10 @@ Shell = require 'shell'
 {Range} = require 'atom'
 
 module.exports =
-  configDefaults:
-    openCodebug: true
+  config:
+    openCodebug:
+      type: 'boolean'
+      default: true
 
   activate: ->
     atom.commands.add 'atom-workspace', 'codebug:break', => @codebugBreak()

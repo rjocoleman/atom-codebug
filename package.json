@@ -5,9 +5,10 @@
   "description": "Debug with Codebug",
   "repository": "https://github.com/rjocoleman/atom-codebug",
   "license": "MIT",
-  "activationEvents": [
-    "codebug:break"
-  ],
+  "activationCommands": {
+    "atom-workspace": ["codebug:break"],
+    "atom-text-editor": ["codebug:break"]
+  },
   "engines": {
     "atom": "*"
   },

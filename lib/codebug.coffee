@@ -1,4 +1,4 @@
-Shell = require 'shell'
+{exec} = require 'child_process'
 {Range} = require 'atom'
 
 module.exports =
@@ -37,7 +37,10 @@ module.exports =
       '2'
 
   openUrlInBrowser: (url) ->
-    Shell.openExternal url
+    exec "open '#{url}'", (err, stdout, stderr) ->
+      console.log "codebug stdout: #{stdout}" if stdout
+      console.warn "codebug stderr: #{stderr}" if stderr
+      console.warn "codebug err: #{err}" if err
 
   breakUrl: ->
     "codebug://send?file=#{@file()}&line=#{@getLineNumber()}&op=#{@whichOperation()}&open=#{@openIt()}"
@@ -51,7 +54,6 @@ module.exports =
   validationErrors: ->
     unless @file()
       return ['Buffer is not saved!']
-
     []
 
   reportValidationErrors: ->
